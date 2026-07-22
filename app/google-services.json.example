@@ -1,0 +1,6 @@
+{
+  "__PLACEHOLDER__": true,
+  "_comment": "Bu dosyayı Firebase Console'dan indirip buraya koy.",
+  "_comment2": "Firebase Console > Project Settings > google-services.json",
+  "_comment3": "Bu dosyayı asla Git'e commit etme! .gitignore'a ekli."
+}

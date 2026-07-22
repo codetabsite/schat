@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Background -->
+    <path
+        android:fillColor="#0A0A0A"
+        android:pathData="M0,0 L108,0 L108,108 L0,108 Z"/>
+
+    <!-- Rounded background square (launcher icon safe zone) -->
+    <path
+        android:fillColor="#E8FF47"
+        android:pathData="M20,20 Q20,10 30,10 L78,10 Q88,10 88,20 L88,68 Q88,78 78,78 L62,78 L54,92 L46,78 L30,78 Q20,78 20,68 Z"/>
+
+    <!-- Lightning bolt / S shape in black -->
+    <path
+        android:fillColor="#0A0A0A"
+        android:pathData="M58,26 L42,52 L52,52 L46,82 L66,50 L55,50 Z"/>
+
+</vector>

@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "576525902218",
+    "firebase_url": "https://schat-8cb51-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "schat-8cb51",
+    "storage_bucket": "schat-8cb51.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:576525902218:android:c77bf346bd7ab4e264e873",
+        "android_client_info": {
+          "package_name": "com.tdev.schat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAVN00FXjmqfJDIJ-RZdonpnrD61apbZxI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
