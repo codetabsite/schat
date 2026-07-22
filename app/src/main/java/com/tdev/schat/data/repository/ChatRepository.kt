@@ -7,7 +7,6 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ServerValue
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.messaging.FirebaseMessaging
-import com.tdev.schat.crypto.E2EEncryption
 import com.tdev.schat.data.model.Chat
 import com.tdev.schat.data.model.Message
 import com.tdev.schat.data.model.User
@@ -195,11 +194,6 @@ class ChatRepository {
                 val msgs = snapshot.children
                     .mapNotNull { it.getValue(Message::class.java) }
                     .sortedBy { it.timestamp }
-                    // Feature 11: Decrypt messages on receive
-                    .map { msg ->
-                        val decrypted = E2EEncryption.tryDecrypt(chatId, msg.text)
-                        msg.copy(text = decrypted)
-                    }
                 trySend(msgs)
             }
             override fun onCancelled(error: DatabaseError) { close(error.toException()) }
@@ -219,14 +213,11 @@ class ChatRepository {
         val msgId = msgRef.key ?: error("Could not generate message id")
         val now = System.currentTimeMillis()
 
-        // Feature 11: Encrypt message before sending to Firebase
-        val encryptedText = runCatching { E2EEncryption.encrypt(chatId, text) }.getOrDefault(text)
-
         val message = Message(
             id = msgId,
             senderId = senderId,
             senderName = senderName,
-            text = encryptedText,
+            text = text,
             timestamp = now,
             isRead = false
         )
@@ -234,7 +225,7 @@ class ChatRepository {
 
         db.child("chats").child(chatId).updateChildren(
             mapOf(
-                "lastMessage" to "🔒 Şifreli mesaj",
+                "lastMessage" to text,
                 "lastMessageTime" to now,
                 "lastSenderId" to senderId
             )
